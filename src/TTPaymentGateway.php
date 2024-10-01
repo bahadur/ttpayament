@@ -16,7 +16,6 @@ class TTPaymentGateway
         $this->username = $username;
         $this->paswword = $paswword;
         $this->client = new Client();
-
     }
 
     public function makePayment(array $paymentDetails): string
