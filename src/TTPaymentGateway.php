@@ -7,14 +7,14 @@ use GuzzeleHttp\Client;
 class TTPaymentGateway
 {
 
+    protected $apiUrl;
     protected $client;
-    protected string $apiUrl;
     protected string $username;
     protected string $password;
 
     public function __construct(string $apiUrl, string $username, string $password)
     {
-        $this->apiUrl = $apiUrl;
+        $this->apiUrl = "https://igw-seb-demo.every-pay.com/api/";
         $this->username = $username;
         $this->password = $password;
         $this->client = new Client();
@@ -22,9 +22,9 @@ class TTPaymentGateway
 
     public function makeOneOffPayment(array $paymentDetails): string
     {
-        $response = $this->client->request('POST', $this->apiUrl, [
+        $response = $this->client->request('POST', $this->apiUrl . 'v4/payments/oneoff', [
             'headers' => [
-                'Authentication' => 'Basic ',
+                'Authentication' => 'Basic ' . base64_encode("$this->username:$this->password"),
                 'Content-Type' => 'application/json'
             ],
             'json' => $paymentDetails
