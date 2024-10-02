@@ -8,17 +8,17 @@ class TTPaymentGateway
 {
 
     protected $client;
-    protected $username;
-    protected $paswword;
+    protected string $username;
+    protected string $password;
 
-    public function __construct(string $username, string $paswword)
+    public function __construct(string $username, string $password)
     {
         $this->username = $username;
-        $this->paswword = $paswword;
+        $this->password = $password;
         $this->client = new Client();
     }
 
-    public function makePayment(array $paymentDetails): string
+    public function makeOneOffPayment(array $paymentDetails): string
     {
         $response = $this->client->request('POST', $this->apiIrl, [
             'headers' => [
@@ -30,6 +30,4 @@ class TTPaymentGateway
 
         return $response->getBody()->getContents();
     }
-
-
 }
