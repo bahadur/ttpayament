@@ -9,8 +9,8 @@ class TTPaymentGateway
 
     protected $apiUrl;
     protected $client;
-    private string $username;
-    private string $password;
+    protected $username;
+    protected $password;
 
     public function __construct(string $username, string $password)
     {
