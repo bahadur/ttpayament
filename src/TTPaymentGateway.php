@@ -12,7 +12,7 @@ class TTPaymentGateway
     protected string $username;
     protected string $password;
 
-    public function __construct(string $apiUrl, string $username, string $password)
+    public function __construct(string $username, string $password)
     {
         $this->apiUrl = "https://igw-seb-demo.every-pay.com/api/";
         $this->username = $username;
