@@ -2,7 +2,7 @@
 
 namespace TaskuTark\TTPayment;
 
-use GuzzeleHttp\Client;
+use GuzzleHttp\Client;
 
 class TTPaymentGateway
 {
