@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 
 class TTPaymentGateway
 {
-
     protected $apiUrl;
     protected $client;
     protected $username;
