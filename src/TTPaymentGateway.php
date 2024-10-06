@@ -21,12 +21,22 @@ class TTPaymentGateway
 
     public function makeOneOffPayment(array $paymentDetails): string
     {
+        $param = [
+            "timestamp" => \Carbon\Carbon::now()->format('c'),
+            "request_token" => true,
+            "token_agreement" => "unscheduled",
+            "customer_ip" => $_SERVER['REMOTE_HOST'],
+            "api_username" => $this->username,
+
+        ];
+        $params = array_merge($paymentDetails, $param);
+
         $response = $this->client->request('POST', $this->apiUrl . 'v4/payments/oneoff', [
             'headers' => [
                 'Authentication' => 'Basic ' . base64_encode("$this->username:$this->password"),
                 'Content-Type' => 'application/json'
             ],
-            'json' => $paymentDetails
+            'json' => $params
         ]);
 
         return $response->getBody()->getContents();
