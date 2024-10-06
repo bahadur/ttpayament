@@ -25,7 +25,7 @@ class TTPaymentGateway
             "timestamp" => \Carbon\Carbon::now()->format('c'),
             "request_token" => true,
             "token_agreement" => "unscheduled",
-            "customer_ip" => $_SERVER['HTTP_CLIENT_IP'],
+            "customer_ip" => $_SERVER['REMOTE_ADDR'],
             "api_username" => $this->username,
 
         ];
